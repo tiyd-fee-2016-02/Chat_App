@@ -28,12 +28,12 @@ new Vue({
             this.newChat = ''
             break;
         case "@giphy":
-        var json = $.getJSON("http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&q=" + text)
-              json.done(function(data) {
-                 console.log("got data", data);
-            });
+        // var json = $.getJSON("http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&q=" + text)
+        //       json.done(function(data) {
+        //          console.log("got data", data);
+        //     });
             // data[0].images.fixed_height.url
-            this.chats.push({text: "<img src ='" + json.data[0].images.fixed_height.url + "'>"}),
+            this.chats.push({text: giphyTest}),
             this.newChat = ''
             break;
         case "@dictionary":
