@@ -4,7 +4,8 @@ new Vue({
     newChat:'',
     chats:[
       {text: "your first chat!"},
-      {text: "another chat"}
+      {text: "another chat"},
+      {text: "type @help to start"}
     ] //closes chats array
   },
 
@@ -14,7 +15,8 @@ new Vue({
 
       switch(text) {
         case "@help":
-            this.chats.push({text: "Here's some help:"}),
+            toriTest();
+            this.chats.push({text: toriTest()}),
             this.newChat = ''
             break;
         case "@weather":
