@@ -28,20 +28,20 @@ new Vue({
         case "@giphy":
         var json = $.getJSON("http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&q=" + text)
               json.done(function(data) {
-                 console.log("success got data", data);
+                 console.log("got data", data);
             });
             // data[0].images.fixed_height.url
             this.chats.push({text: "<img src ='" + json.data[0].images.fixed_height.url + "'>"}),
             this.newChat = ''
             break;
-        // case "@dictionary":
-        //   var dict = $.getJSON("http://dictionaryapi.net/api/definition/" + text)
-        //     dict.done(function(data) {
-        //       console.log("success got data", data);
-        //     });
-        //     this.chats.push({text: "the definition is" + dict.definitions }),
-        //     this.newChat = ''
-        //     break;
+        case "@dictionary":
+          var dict = $.getJSON("http://dictionaryapi.net/api/definition/" + text)
+            dict.done(function(data) {
+              console.log("got data", data);
+            });
+            this.chats.push({text: "the definition is" + dict.definitions }),
+            this.newChat = ''
+            break;
         default:
             this.chats.push({text: "sorry I didn't understand. try @help"}),
             this.newChat = ''
