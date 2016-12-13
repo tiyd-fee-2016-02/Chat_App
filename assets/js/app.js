@@ -1,22 +1,37 @@
+var text;
+var splitText;
+var textRequest;
+var APIRequest;
+var theGIF;
+var rating;
+var ratingTest;
+
 new Vue({
   el:'#chat-area',
   data: {
     newChat:'',
     chats:[
       {text: "your first chat!"},
-      {text: "another chat"},
       {text: "type @help to start"}
     ] //closes chats array
   },
 
   methods: {
     sendChat: function(text){
-      var text = this.newChat.trim()
+      text = this.newChat
+      var splitText = text.split(" ")
 
-      switch(text) {
+      var textRequest = splitText[0]
+  
+
+      switch(textRequest) {
         case "@help":
-            toriTest();
-            this.chats.push({text: toriTest()}),
+
+            this.chats.push({text: "please help"}),
+            this.newChat = ''
+            break;
+        case "@movie":
+            this.chats.push({text: atMovie()}),
             this.newChat = ''
             break;
         case "@weather":
@@ -28,13 +43,9 @@ new Vue({
             this.newChat = ''
             break;
         case "@giphy":
-        // var json = $.getJSON("http://api.giphy.com/v1/gifs/search?&api_key=dc6zaTOxFJmzC&q=" + text)
-        //       json.done(function(data) {
-        //          console.log("got data", data);
-        //     });
-            // data[0].images.fixed_height.url
-            this.chats.push({text: giphyTest}),
+            this.chats.push({text: giphyTest()}),
             this.newChat = ''
+            console.log("giphy case workedS")
             break;
         case "@dictionary":
           var dict = $.getJSON("http://dictionaryapi.net/api/definition/" + text)
